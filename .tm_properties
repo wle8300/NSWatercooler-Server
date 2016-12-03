@@ -1,0 +1,5 @@
+excludeFiles                = "{_.*,.gitignore,.tm_properties,rethinkdb_data}"
+excludeInFolderSearch       = "{$excludeInFolderSearch,$extraExcludes,node_modules,rethinkdb_data}"
+excludeInFileChooser        = "{$exclude,$excludeInFolderSearch,node_modules}"
+excludeDirectoriesInBrowser = "{$excludeInFolderSearch,$extraExcludes}"
+windowTitle                 = "$TM_FILEPATH"

@@ -1,0 +1,29 @@
+{
+  "name": "memberberries_backend",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "nodemon server.js",
+    "fixtures": "node ./fixtures",
+    "cronnd": "CRONNDIE=TRUE node server",
+    "invoicend": "INVOICENDIE=TRUE node server",
+    "prod": "NODE_ENV=production RETHINKDB_HOST=localhost RETHINKDB_PORT=28015 RETHINKDB_DB=pub_center SERVER_PROTOCOL=http SERVER_HOST=10.128.40.215 SERVER_PORT=3001 pm2 start server.js -f --node-args='--max-old-space-size=1024'",
+    "prod-fixtures": "NODE_ENV=production RETHINKDB_HOST=localhost RETHINKDB_PORT=28015 RETHINKDB_DB=pub_center SERVER_PROTOCOL=http SERVER_HOST=10.128.40.215 SERVER_PORT=3001 node ./fixtures --max-old-space-size=1024",
+    "prod-cronnd": "NODE_ENV=production CRONNDIE=TRUE RETHINKDB_HOST=localhost RETHINKDB_PORT=28015 RETHINKDB_DB=pub_center SERVER_PROTOCOL=http SERVER_HOST=10.128.40.215 SERVER_PORT=3001 UV_THREADPOOL_SIZE=128 node server.js --max-old-space-size=1024",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "William Le <williamle8300@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "glob": "https://registry.npmjs.org/glob/-/glob-7.1.0.tgz",
+    "good": "https://registry.npmjs.org/good/-/good-6.6.3.tgz",
+    "good-console": "https://registry.npmjs.org/good-console/-/good-console-5.3.2.tgz",
+    "hapi": "https://registry.npmjs.org/hapi/-/hapi-13.5.3.tgz",
+    "hapi-auth-jwt": "https://registry.npmjs.org/hapi-auth-jwt/-/hapi-auth-jwt-4.0.0.tgz",
+    "hapi-swagger": "^7.4.0",
+    "inert": "https://registry.npmjs.org/inert/-/inert-3.2.1.tgz",
+    "package": "^1.0.1",
+    "path": "https://registry.npmjs.org/path/-/path-0.12.7.tgz",
+    "vision": "https://registry.npmjs.org/vision/-/vision-4.1.0.tgz"
+  }
+}
