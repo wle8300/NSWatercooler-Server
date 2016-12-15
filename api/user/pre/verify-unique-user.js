@@ -1,5 +1,5 @@
 var Boom = require('boom')
-var R = require('rethinkdb')
+var Rethinkdb = require('rethinkdb')
 
 var Database = require('../../../database')
 

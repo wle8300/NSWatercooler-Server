@@ -1,8 +1,8 @@
 // var Bcrypt = require('bcrypt')
 // var Boom = require('boom')
 //
-// var createNewJwt = require('../../utils/create-new-jwt')
-// var verifyUniqueUser = require('./pre/verify-unique-user')
+// var ../../utils/create-new-jwt = require('../../utils/create-new-jwt')
+// var ./pre/verify-unique-user = require('./pre/verify-unique-user')
 //
 //
 module.exports = [

@@ -1,9 +1,21 @@
+var port = process.env.SERVER_PORT || '3001'
+
+
 module.exports = {
 	secret: 'imemba',
+	rdb: {
+		host: process.env.RETHINKDB_HOST || 'localhost',
+		port: process.env.RETHINKDB_PORT || 28015,
+    authKey: '',
+		db: process.env.RETHINKDB_DB || 'memberberries_backend',
+	},
 	server: {
 		protocol: process.env.SERVER_PROTOCOL || 'http',
 		host: process.env.SERVER_HOST || 'localhost',
-		port: process.env.SERVER_PORT || '3001',
+		port: port
+	},
+	dbg: {
+		serviceId: 'asdf'
 	},
 	supportEmail: {
 		address: 'williamle8300@gmail.com',
