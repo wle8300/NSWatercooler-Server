@@ -1,45 +1,17 @@
-var Boom = require('boom')
-var Rethinkdb = require('rethinkdb')
+var User = require('../../../model/User')
 
-var Database = require('../../../database')
+var Boom = require('boom')
+
 
 module.exports = (request, reply) => {
 	
-	Database.connect((err, connection) => {
-		
-		if (err) {
-			connection.close()
-			return reply(err)
-		}
-		
-		R.table('user')
-		.getAll(request.payload.user.username, {index: 'username'})
-	  .union(
-			R.table('user').getAll(request.payload.user.email, {index: 'email'})
-		)
-		.distinct()
-		.run(connection, (err, result) => {
-			
-			var preExistingUser = result.length ? result[0] : null
-						
-			if (err) {
-				connection.close()
-				return reply(err)
-			}
+	User
+	.getAll(request.payload.user.email, {index: 'email'})
+	.then((users) => {
 
-	    if (preExistingUser) {
-	      if (preExistingUser.username === request.payload.user.username) {
-					connection.close()
-					return reply(Boom.badRequest('Username taken'))
-	      }
-	      if (preExistingUser.email === request.payload.user.email) {
-					connection.close()
-	        return reply(Boom.badRequest('Email taken'))
-	      }
-	    }
-			
-			connection.close()
-	    return reply(request.payload)
-		})
+		if (users.length) return reply(Boom.conflict('User already exists'))
+		
+		return reply()
 	})
+	.catch((err) => {reply(err)})
 }

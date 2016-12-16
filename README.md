@@ -1,3 +1,9 @@
+# value
+- community-building (aka social)
+- tangible goods individual/group, e.g., cold hard cash, swag (clothing, stickers, patches), 
+- individual intangible value, e.g., preferred loadouts, best class performance, statistics, booty passed down from outfit leader, tactile/response time improvement, decision making
+- group intangible value, e.g., street credz
+
 # rrouter
 - programmatically navigating: https://github.com/STRML/react-router-component/issues/24#issuecomment-38753069
 

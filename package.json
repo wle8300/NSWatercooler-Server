@@ -9,6 +9,7 @@
   "author": "William Le <williamle8300@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.1",
     "boom": "https://registry.npmjs.org/boom/-/boom-2.10.1.tgz",
     "glob": "https://registry.npmjs.org/glob/-/glob-7.1.0.tgz",
     "good": "https://registry.npmjs.org/good/-/good-6.6.3.tgz",
@@ -18,6 +19,7 @@
     "hapi-swagger": "^7.4.0",
     "inert": "https://registry.npmjs.org/inert/-/inert-3.2.1.tgz",
     "joi": "https://registry.npmjs.org/joi/-/joi-6.10.1.tgz",
+    "jsonwebtoken": "https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-5.7.0.tgz",
     "package": "^1.0.1",
     "path": "https://registry.npmjs.org/path/-/path-0.12.7.tgz",
     "superagent": "^3.1.0",

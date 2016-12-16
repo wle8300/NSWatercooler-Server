@@ -5,8 +5,8 @@ var TTypes = T.type
 
 
 var Outfit = T.createModel('Outfit', {
-    id: TTypes.string(),
-    name: TTypes.string()
+	id: TTypes.string(),
+	name: TTypes.string()
 })
 
 Outfit.ensureIndex('name')
