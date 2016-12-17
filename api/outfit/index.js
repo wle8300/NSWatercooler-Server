@@ -48,7 +48,7 @@ module.exports = [
 		handler: (request, reply) => {
 			
 			Dataservices.dbg.getOutfitById(request.query.server, request.params._Outfit_)
-			.then((outfit) => reply(outfit))
+			.then(reply)
 			.catch((err) => {reply(Boom.badRequest(err))})
 		}
 	},
@@ -70,7 +70,7 @@ module.exports = [
 		handler: (request, reply) => {
 
 			Dataservices.dbg.getOutfitMembers(request.query.server, request.params._Outfit_, request.query.filterOnlineCharacters)
-			.then((outfitCharacters) => reply(outfitCharacters))
+			.then(reply)
 			.catch((err) => {reply(Boom.badRequest(err))})
 		}
 	},
@@ -90,20 +90,6 @@ module.exports = [
 		},
 		handler: (request, reply) => {
 			
-			/*
-			> outfit adding "who's online RIGHT NOW" GET /outfit?search=•••&limit=•••&page=••• POST /outfit-subscription GET /user/•••/outfit-subscriptions GET/outfit/••• GET/character?outfit=•••&is-online=true
-				
-			*/
-			/*
-				IF 409, BOOM('DUPLICATE') {THE CLIENT SHOULD MANUALLY MAKE SUBSEQUENT GET REQUEST}
-				IF 404, THEN SEARCH CENSUS.DBG {SIDE-EFFECT: GET CURRENT ONLINE MEMBERS}
-				SIGN-UPS AND SESSIONS
-				LET THEM SUBSCRIBE
-				LAUNCH WEBSITE: list of indexed outfits, outfit pages, signups/login, subscribe to outfits, list of user's subscribed outfits,
-				---memberries.com---
-				iPHONE APP THAT HAS NOTIFICAIONS
-			*/
-
 			Outfit
 			.filter((doc) => doc('alias').match('^' +request.payload.outfit.name+ '$'))
 			.then((outfits) => {

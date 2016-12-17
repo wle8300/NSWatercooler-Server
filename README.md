@@ -11,3 +11,6 @@
 - https://www.raywenderlich.com/123862/push-notifications-tutorial
 - http://devgirl.org/2012/10/19/tutorial-apple-push-notifications-with-phonegap-part-1/
 - http://phonegaptut.com/2016/05/31/how-to-send-push-notifications-in-phonegap-application/
+
+# compound indexes with Thinky
+- https://github.com/neumino/thinky/issues/17

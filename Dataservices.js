@@ -19,9 +19,9 @@ module.exports = {
 				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +translateDBGAPIServer(server)+ ':v2/outfit?alias_lower=^' +searchTerm)
 				.end((err, response) => {
 
-					if (err || response.body.error) reject('There was an error with your request')
+					if (err || response.body.error) return reject('There was an error with your request')
 						
-					resolve(response.body.outfit_list)
+					return resolve(response.body.outfit_list)
 				})
 			})
 		},
@@ -33,9 +33,9 @@ module.exports = {
 				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +translateDBGAPIServer(server)+ ':v2/outfit?outfit_id=' +_Outfit_)
 				.end((err, response) => {
 					
-					if (err || response.body.error) reject('There was an error with your request')
+					if (err || response.body.error) return reject('There was an error with your request')
 						
-					resolve(response.body.outfit_list[0])
+					return resolve(response.body.outfit_list[0])
 				})
 			})
 		},
@@ -47,10 +47,10 @@ module.exports = {
 				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +translateDBGAPIServer(server)+ ':v2/outfit?outfit_id=' +_Outfit_+ '&c:resolve=leader_name,member_character_name,member_online_status')
 				.end((err, response) => {
 
-					if (err || response.body.error) reject('There was an error with your request')
+					if (err || response.body.error) return reject('There was an error with your request')
 
-					if (filterOnlineCharacters) resolve(response.body.outfit_list[0].members.filter((member) => member.online_status === '1000'))
-					if (!filterOnlineCharacters) resolve(response.body.outfit_list[0].members)
+					if (filterOnlineCharacters) return resolve(response.body.outfit_list[0].members.filter((member) => member.online_status === '1000'))
+					if (!filterOnlineCharacters) return resolve(response.body.outfit_list[0].members)
 				})
 			})
 		}

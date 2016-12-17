@@ -23,5 +23,5 @@ module.exports = function (request, reply) {
 			}
 		})
 	})
-	.error((err) => reply(err))
+	.error(reply)
 }

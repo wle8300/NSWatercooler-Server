@@ -5,7 +5,7 @@ var TTypes = T.type
 
 
 var User = T.createModel('User', {
-	id: TTypes.number(),
+	id: TTypes.string(),
 	email: TTypes.string().email(),
 	password: TTypes.string()
 })
