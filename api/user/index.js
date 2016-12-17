@@ -15,10 +15,8 @@ module.exports = [
 			tags: ['api'],
 	    validate: {
 	      payload: {
-	      	user: Joi.object().keys({
-					  email: Joi.string().email().required(),
-					  password: Joi.string().required(),
-	      	}).required()
+				  email: Joi.string().email().required(),
+				  password: Joi.string().required(),
 	      },
 	    },
 			pre: [{method: require('./pre/verify-unique-user')}]
@@ -31,14 +29,14 @@ module.exports = [
 					return reply(err)
 				}
 				
-		    Bcrypt.hash(request.payload.user.password, salt, (err, hashedPassword) => {
+		    Bcrypt.hash(request.payload.password, salt, (err, hashedPassword) => {
     
 				  if (err) {
 	          return reply(err)
 	        }
 					
 					User({
-						email: request.payload.user.email,
+						email: request.payload.email,
 						password: hashedPassword
 					})
 					.save()

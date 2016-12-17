@@ -6,7 +6,7 @@ var Boom = require('boom')
 module.exports = (request, reply) => {
 
 	User
-	.getAll(request.payload.user.email, {index: 'email'})
+	.getAll(request.payload.email, {index: 'email'})
 	.then((users) => {
 		
 		if (users.length) return reply(Boom.conflict('User already exists'))
