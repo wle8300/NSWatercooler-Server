@@ -18,16 +18,14 @@ module.exports = [
 			validate: {
 				query: {
 					search: Joi.string().required(),
-					server: Joi.string().required(),
-					page: Joi.number().default(1),
-					limit: Joi.number().default(10)
+					server: Joi.string().required()
 				}
 			}
 		},
 		handler: (request, reply) => {
 			
 			Dataservices.dbg.searchOutfits(request.query.server, request.query.search)
-			.then((outfits) => reply(outfits))
+			.then(reply)
 			.catch((err) => {reply(Boom.badRequest(err))})
 		}
 	},
@@ -107,8 +105,8 @@ module.exports = [
 					
 						Outfit(util.translateOutfitDBGModel(request.payload.outfit.region, response.body.outfit_list[0]))
 						.save()
-						.then((outfit) => reply(outfit))
-						.error((err) => reply(err))
+						.then(reply)
+						.error(reply)
 				})
 			})
 			.error((err) => reply(err))

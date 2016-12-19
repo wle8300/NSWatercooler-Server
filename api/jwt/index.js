@@ -1,7 +1,9 @@
 const env = require('../../env')
+const util = require('../../util')
 
-const createNewJwt = require('../../util/create-new-jwt')
+const User = require('../../model/User')
 
+const DeciferJwtPayload = require('jwt-decode')
 const Jwt = require('jsonwebtoken')
 const Joi = require('joi')
 
@@ -22,7 +24,7 @@ module.exports = [
 			pre: [{method: require('./pre/verify-credentials.js'), assign: 'user'}]
 		},
 		handler: (request, reply) => {
-			return reply({jwt: createNewJwt(request.pre.user)})
+			return reply({jwt: util.createNewJwt(request.pre.user)})
 		}
 	},
 	{
@@ -38,15 +40,10 @@ module.exports = [
 			}
 		},
 		handler: (request, reply) => {
-			
-			Jwt.verify(request.payload.jwt, env.secret, (err, payload) => {
-				
-				if (err) {
-					return reply(err)
-				}
-				
-				return reply({jwt: createNewJwt(payload)})
-			})
+
+			User
+			.get(DeciferJwtPayload(request.payload.jwt).id)
+			.then((user) => reply({jwt: util.createNewJwt(user)}))
 		}
 	}
 ]

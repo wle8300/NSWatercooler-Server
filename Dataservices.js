@@ -11,6 +11,20 @@ var translateDBGAPIServer = function (server) {
 
 module.exports = {
 	dbg: {
+		searchCharacters: function (server, searchTerm, limit) {
+			
+			return new Promise ((resolve, reject) => {
+
+				Request
+				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +translateDBGAPIServer(server)+ ':v2/character_name?name.first_lower=^' +searchTerm+ '&c:limit=' +limit+ '&c:show=name.first,character_id&c:sort=name.first')
+				.end((err, response) => {
+
+					if (err || response.body.error) return reject('There was an error with your request')
+						
+					return resolve(response.body.character_name_list)
+				})
+			})
+		},
 		searchOutfits: function (server, searchTerm) {
 		
 			return new Promise ((resolve, reject) => {

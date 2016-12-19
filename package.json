@@ -20,6 +20,7 @@
     "inert": "https://registry.npmjs.org/inert/-/inert-3.2.1.tgz",
     "joi": "https://registry.npmjs.org/joi/-/joi-6.10.1.tgz",
     "jsonwebtoken": "https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-5.7.0.tgz",
+    "jwt-decode": "^2.1.0",
     "package": "^1.0.1",
     "path": "https://registry.npmjs.org/path/-/path-0.12.7.tgz",
     "superagent": "^3.1.0",
