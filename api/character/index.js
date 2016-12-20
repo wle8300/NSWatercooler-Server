@@ -27,4 +27,25 @@ module.exports = [
 			.catch((err) => {reply(Boom.badRequest(err))})
 		}
 	},
+	{
+		method: 'GET',
+		path: '/character/{_Character_}',
+		config: {
+			tags: ['api'],
+			validate: {
+				params: {
+					_Character_: Joi.string().required()
+				},
+				query: {
+					server: Joi.string().required()
+				}
+			}
+		},
+		handler: (request, reply) => {
+			
+			Dataservices.dbg.getCharacterById(request.query.server, request.params._Character_)
+			.then(reply)
+			.catch((err) => {reply(Boom.badRequest(err))})
+		}
+	},
 ]

@@ -25,6 +25,20 @@ module.exports = {
 				})
 			})
 		},
+		getCharacterById: function (server, _Character_) {
+			
+			return new Promise ((resolve, reject) => {
+
+				Request
+				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +translateDBGAPIServer(server)+ ':v2/single_character_by_id?character_id=' +_Character_)
+				.end((err, response) => {
+					
+					if (err || response.body.error) return reject('There was an error with your request')
+						
+					return resolve(response.body.single_character_by_id_list[0])
+				})
+			})
+		},
 		searchOutfits: function (server, searchTerm) {
 		
 			return new Promise ((resolve, reject) => {
@@ -56,7 +70,7 @@ module.exports = {
 		getOutfitMembers: function (server, _Outfit_, filterOnlineCharacters) {
 
 			return new Promise ((resolve, reject) => {
-				
+				//ALTERNATIVE http://census.daybreakgames.com/s:asdf/get/ps2ps4us:v2/outfit_member?outfit_id=37531502290403332&c:resolve=online_status&c:limit=1000000000
 				Request
 				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +translateDBGAPIServer(server)+ ':v2/outfit?outfit_id=' +_Outfit_+ '&c:resolve=leader_name,member_character_name,member_online_status')
 				.end((err, response) => {
