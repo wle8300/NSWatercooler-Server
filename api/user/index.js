@@ -1,4 +1,5 @@
 var OutfitBookmark = require('../../model/OutfitBookmark')
+var CharacterSubscription = require('../../model/CharacterSubscription')
 var User = require('../../model/User')
 
 var Bcrypt = require('bcrypt')
@@ -65,6 +66,29 @@ module.exports = [
 				console.log(1);
 			User
 			.get(request.params._User_)
+			.then(reply)
+			.catch(reply)
+		}
+	},
+	{
+		method: 'GET',
+		path: '/user/{_User_}/character-subscriptions',
+		config: {
+			description: 'Get User\'s Character Subscriptions',
+			tags: ['api'],
+			auth: {strategy: 'jwt'},
+	    validate: {
+				params: {
+					_User_: Joi.string().required()
+				}
+	    }
+		},
+		handler: function (request, reply) {
+			
+			if (request.params._User_ !== request.auth.credentials.id) return reply(Boom.unauthorized())
+			
+			CharacterSubscription
+			.getAll(request.params._User_, {index: '_User_'})
 			.then(reply)
 			.catch(reply)
 		}
