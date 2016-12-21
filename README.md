@@ -1,8 +1,13 @@
+
 # value
-- community-building (aka social)
+- social, community building, chatting, letting people represent (flaunting their pride)
+- cultivating healthy competition between outfits
+- encouraging the recruitment and retention of fresh planetman's to The Game
+- gain tangible/intangible goods
+## tangible goods
 - tangible goods individual/group, e.g., cold hard cash, swag (clothing, stickers, patches), 
 - individual intangible value, e.g., preferred loadouts, best class performance, statistics, booty passed down from outfit leader, tactile/response time improvement, decision making
-- group intangible value, e.g., street credz
+- group intangible value, e.g., street credz to flaunt
 
 # rrouter
 - programmatically navigating: https://github.com/STRML/react-router-component/issues/24#issuecomment-38753069

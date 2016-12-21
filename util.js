@@ -1,5 +1,8 @@
-const Jwt = require('jsonwebtoken')
 const env = require('./env')
+
+const Nodemailer = require('nodemailer');
+const Jwt = require('jsonwebtoken')
+const Package = require('package')
 
 
 module.exports = {
@@ -16,6 +19,21 @@ module.exports = {
 		  	expiresIn: "21d"
 		  }
 		)
+	},
+	sendEmail: function (emailTo, htmlMessage, callback) {
+		
+		const emailClient = Nodemailer.createTransport(
+			'smtps://' +env.supportEmail.address+ ':' +env.supportEmail.password+ '@smtp.gmail.com'
+		)
+		
+		emailClient.sendMail({
+			from: env.supportEmail.address,
+			to: emailTo,
+			subject: '[' +Package.name+ '] ' +new Date().toDateString(),
+			html: htmlMessage
+		}, (err, info) => {
+			return callback()
+		})
 	},
 	translateOutfitDBGModel: function (region, OutfitDBG) {
 		return {

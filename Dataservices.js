@@ -28,14 +28,15 @@ module.exports = {
 		getCharacterById: function (server, _Character_) {
 			
 			return new Promise ((resolve, reject) => {
-
+				
+				//docs: https://census.daybreakgames.com/s:asdf/get/ps2ps4us:v2
 				Request
-				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +translateDBGAPIServer(server)+ ':v2/single_character_by_id?character_id=' +_Character_)
+				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +translateDBGAPIServer(server)+ ':v2/character?character_id=' +_Character_+ '&c:resolve=online_status,outfit_member_extended')
 				.end((err, response) => {
 					
 					if (err || response.body.error) return reject('There was an error with your request')
 						
-					return resolve(response.body.single_character_by_id_list[0])
+					return resolve(response.body.character_list[0])
 				})
 			})
 		},

@@ -1,5 +1,5 @@
 {
-  "name": "memberberries_backend",
+  "name": "PlanetLife2",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
   "author": "William Le <williamle8300@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.1.4",
     "bcrypt": "^1.0.1",
     "boom": "https://registry.npmjs.org/boom/-/boom-2.10.1.tgz",
     "glob": "https://registry.npmjs.org/glob/-/glob-7.1.0.tgz",
@@ -21,10 +22,12 @@
     "joi": "https://registry.npmjs.org/joi/-/joi-6.10.1.tgz",
     "jsonwebtoken": "https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-5.7.0.tgz",
     "jwt-decode": "^2.1.0",
+    "nodemailer": "^2.7.0",
     "package": "^1.0.1",
     "path": "https://registry.npmjs.org/path/-/path-0.12.7.tgz",
     "superagent": "^3.1.0",
     "thinky": "^2.3.8",
-    "vision": "https://registry.npmjs.org/vision/-/vision-4.1.0.tgz"
+    "vision": "https://registry.npmjs.org/vision/-/vision-4.1.0.tgz",
+    "websocket": "^1.0.23"
   }
 }

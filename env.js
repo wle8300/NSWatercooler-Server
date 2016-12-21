@@ -3,6 +3,10 @@ var port = process.env.SERVER_PORT || '3001'
 
 module.exports = {
 	secret: 'imemba',
+	supportEmail: {
+		address: 'williamle8300@gmail.com',
+		password: '!Elmailliw0',
+	},
 	rdb: {
 		host: process.env.RETHINKDB_HOST || 'localhost',
 		port: process.env.RETHINKDB_PORT || 28015,
