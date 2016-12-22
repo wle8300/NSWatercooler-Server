@@ -68,7 +68,7 @@ module.exports = {
 				})
 			})
 		},
-		getOutfitMembers: function (server, _Outfit_, filterOnlineCharacters) {
+		getOutfitMembers: function (server, _Outfit_, filterOnline) {
 
 			return new Promise ((resolve, reject) => {
 				//ALTERNATIVE http://census.daybreakgames.com/s:asdf/get/ps2ps4us:v2/outfit_member?outfit_id=37531502290403332&c:resolve=online_status&c:limit=1000000000
@@ -78,8 +78,8 @@ module.exports = {
 
 					if (err || response.body.error) return reject('There was an error with your request')
 
-					if (filterOnlineCharacters) return resolve(response.body.outfit_list[0].members.filter((member) => member.online_status === '1000'))
-					if (!filterOnlineCharacters) return resolve(response.body.outfit_list[0].members)
+					if (filterOnline) return resolve(response.body.outfit_list[0].members.filter((member) => member.online_status !== '0'))
+					if (!filterOnline) return resolve(response.body.outfit_list[0].members)
 				})
 			})
 		}

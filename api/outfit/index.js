@@ -61,13 +61,12 @@ module.exports = [
 				},
 				query: {
 					server: Joi.string().required(),
-					filterOnlineCharacters: Joi.boolean().default(false)
+					filterOnline: Joi.string().required()
 				}
 			}
 		},
 		handler: (request, reply) => {
-
-			Dataservices.dbg.getOutfitMembers(request.query.server, request.params._Outfit_, request.query.filterOnlineCharacters)
+			Dataservices.dbg.getOutfitMembers(request.query.server, request.params._Outfit_, request.query.filterOnline)
 			.then(reply)
 			.catch((err) => {reply(Boom.badRequest(err))})
 		}
