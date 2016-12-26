@@ -61,7 +61,7 @@ module.exports = [
 				},
 				query: {
 					server: Joi.string().required(),
-					filterOnline: Joi.string().required()
+					filterOnline: Joi.string().default(false)
 				}
 			}
 		},

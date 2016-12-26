@@ -71,15 +71,15 @@ module.exports = {
 		getOutfitMembers: function (server, _Outfit_, filterOnline) {
 
 			return new Promise ((resolve, reject) => {
-				//ALTERNATIVE http://census.daybreakgames.com/s:asdf/get/ps2ps4us:v2/outfit_member?outfit_id=37531502290403332&c:resolve=online_status&c:limit=1000000000
+				
 				Request
-				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +translateDBGAPIServer(server)+ ':v2/outfit?outfit_id=' +_Outfit_+ '&c:resolve=leader_name,member_character_name,member_online_status')
+				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +translateDBGAPIServer(server)+ ':v2/outfit_member?outfit_id=' +_Outfit_+ '&c:resolve=online_status,character&c:limit=1000000000')
 				.end((err, response) => {
 
 					if (err || response.body.error) return reject('There was an error with your request')
-
-					if (filterOnline) return resolve(response.body.outfit_list[0].members.filter((member) => member.online_status !== '0'))
-					if (!filterOnline) return resolve(response.body.outfit_list[0].members)
+					console.log(1, response.body.outfit_member_list.slice(0, 1));
+					if (filterOnline) return resolve(response.body.outfit_member_list.filter((member) => member.online_status !== '0'))
+					if (!filterOnline) return resolve(response.body.outfit_member_list)
 				})
 			})
 		}
