@@ -1,4 +1,5 @@
 var env = require('./env')
+var package = require('./package');
 
 var Glob = require('glob')
 var Good = require('good')
@@ -7,7 +8,6 @@ var Hapi = require('hapi')
 var HapiJwt = require('hapi-auth-jwt')
 var HapiSwagger = require('hapi-swagger');
 var Inert = require('inert')
-var Package = require('./package');
 var Path = require('path')
 var Vision = require('vision')
 
@@ -40,8 +40,8 @@ server.register([
 	  register: HapiSwagger,
 	  options: 	{
 	    info: {
-	      title: Package.name+ ' API v.' +Package.version,
-	      version: Package.version,
+	      title: package.name+ ' API v.' +package.version,
+	      version: package.version,
 	    },
 			securityDefinitions: {
         jwt: {
@@ -68,7 +68,7 @@ server.register([
 		path: '/',
 		method: 'GET',
 		handler: function (request, reply) {
-			reply('Hello ' +Package.name)
+			reply('Hello ' +package.name)
 		}	
 	})
 	

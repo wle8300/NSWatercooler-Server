@@ -1,5 +1,5 @@
 {
-  "name": "PlanetLife2",
+  "name": "DakkaClub",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -22,9 +22,10 @@
     "joi": "https://registry.npmjs.org/joi/-/joi-6.10.1.tgz",
     "jsonwebtoken": "https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-5.7.0.tgz",
     "jwt-decode": "^2.1.0",
+    "moment": "^2.17.1",
     "nodemailer": "^2.7.0",
-    "package": "^1.0.1",
     "path": "https://registry.npmjs.org/path/-/path-0.12.7.tgz",
+    "rethinkdb": "^2.3.3",
     "superagent": "^3.1.0",
     "thinky": "^2.3.8",
     "vision": "https://registry.npmjs.org/vision/-/vision-4.1.0.tgz",

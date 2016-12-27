@@ -1,7 +1,16 @@
+
+
 ALERTS http://ps4us.ps2.fisu.pw/alert/rss/?world=1000
 
 put yourself out
 sword in the fire
+
+
+# gotchas
+
+the DBG api considers:
+- "characters" in "outfits" as "members." it's just characters... don't use "members" as a variable!
+- outfit "leader" as the founder. this contradicts the "leader" member rank; a tier of outfit membership which can be many other characters of the outfit
 
 # value
 - social, community building, chatting, letting people represent (flaunting their pride)

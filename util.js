@@ -1,8 +1,8 @@
 const env = require('./env')
+const package = require('./package.json');
 
 const Nodemailer = require('nodemailer');
 const Jwt = require('jsonwebtoken')
-const Package = require('package')
 
 
 module.exports = {
@@ -29,11 +29,17 @@ module.exports = {
 		emailClient.sendMail({
 			from: env.supportEmail.address,
 			to: emailTo,
-			subject: '[' +Package.name+ '] ' +new Date().toDateString(),
+			subject: '[' +package.name+ '] ' +new Date().toDateString(),
 			html: htmlMessage
 		}, (err, info) => {
 			return callback()
 		})
+	},
+	translateDBGAPIServer: function (server) {
+		
+		if (server === 'genudine') return 'ps2ps4us'
+		if (server === 'ceres') return 'ps2ps4eu'
+		if (server === 'pc') return 'ps2'
 	},
 	translateOutfitDBGModel: function (region, OutfitDBG) {
 		return {

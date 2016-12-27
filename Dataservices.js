@@ -1,13 +1,8 @@
+var util = require('./util')
 var serviceId = require('./env').dbg.serviceId
 
 var Request = require('superagent')
 
-var translateDBGAPIServer = function (server) {
-	
-	if (server === 'genudine') return 'ps2ps4us'
-	if (server === 'ceres') return 'ps2ps4eu'
-	if (server === 'pc') return 'ps2'
-}
 
 module.exports = {
 	dbg: {
@@ -16,7 +11,7 @@ module.exports = {
 			return new Promise ((resolve, reject) => {
 
 				Request
-				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +translateDBGAPIServer(server)+ ':v2/character_name?name.first_lower=^' +searchTerm+ '&c:limit=' +limit+ '&c:show=name.first,character_id&c:sort=name.first')
+				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +util.translateDBGAPIServer(server)+ ':v2/character_name?name.first_lower=^' +searchTerm+ '&c:limit=' +limit+ '&c:show=name.first,character_id&c:sort=name.first')
 				.end((err, response) => {
 
 					if (err || response.body.error) return reject('There was an error with your request')
@@ -29,9 +24,8 @@ module.exports = {
 			
 			return new Promise ((resolve, reject) => {
 				
-				//docs: https://census.daybreakgames.com/s:asdf/get/ps2ps4us:v2
 				Request
-				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +translateDBGAPIServer(server)+ ':v2/character?character_id=' +_Character_+ '&c:resolve=online_status,outfit_member_extended')
+				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +util.translateDBGAPIServer(server)+ ':v2/character?character_id=' +_Character_+ '&c:resolve=online_status,outfit_member_extended')
 				.end((err, response) => {
 					
 					if (err || response.body.error) return reject('There was an error with your request')
@@ -45,7 +39,7 @@ module.exports = {
 			return new Promise ((resolve, reject) => {
 
 				Request
-				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +translateDBGAPIServer(server)+ ':v2/outfit?alias_lower=^' +searchTerm)
+				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +util.translateDBGAPIServer(server)+ ':v2/outfit?alias_lower=^' +searchTerm)
 				.end((err, response) => {
 
 					if (err || response.body.error) return reject('There was an error with your request')
@@ -59,7 +53,7 @@ module.exports = {
 			return new Promise ((resolve, reject) => {
 				
 				Request
-				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +translateDBGAPIServer(server)+ ':v2/outfit?outfit_id=' +_Outfit_)
+				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +util.translateDBGAPIServer(server)+ ':v2/outfit?outfit_id=' +_Outfit_)
 				.end((err, response) => {
 					
 					if (err || response.body.error) return reject('There was an error with your request')
@@ -73,11 +67,11 @@ module.exports = {
 			return new Promise ((resolve, reject) => {
 				
 				Request
-				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +translateDBGAPIServer(server)+ ':v2/outfit_member?outfit_id=' +_Outfit_+ '&c:resolve=online_status,character&c:limit=1000000000')
+				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +util.translateDBGAPIServer(server)+ ':v2/outfit_member?outfit_id=' +_Outfit_+ '&c:resolve=online_status,character&c:limit=1000000000')
 				.end((err, response) => {
 
 					if (err || response.body.error) return reject('There was an error with your request')
-					console.log(1, response.body.outfit_member_list.slice(0, 1));
+
 					if (filterOnline) return resolve(response.body.outfit_member_list.filter((member) => member.online_status !== '0'))
 					if (!filterOnline) return resolve(response.body.outfit_member_list)
 				})

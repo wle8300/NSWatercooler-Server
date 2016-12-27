@@ -5,7 +5,7 @@ var User = require('../../model/User')
 var Bcrypt = require('bcrypt')
 var Boom = require('boom')
 var Joi = require('joi')
-var Errors = require('thinky')().Errors
+
 
 module.exports = [
 	{
@@ -61,9 +61,9 @@ module.exports = [
 	    }
 		},
 		handler: function (request, reply) {
-			console.log(0);
+
 			if (request.params._User_ !== request.auth.credentials.id) return reply(Boom.unauthorized())
-				console.log(1);
+
 			User
 			.get(request.params._User_)
 			.then(reply)
