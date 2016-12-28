@@ -38,7 +38,7 @@ client.onmessage = function(e) {
 	const DBGdata = JSON.parse(e.data)
 
 	//IGNORE THESE!
-	if (DBGdata.type !== 'serviceMessage' || DBGdata.payload.event_name !== 'PlayerLogin') return
+	if (DBGdata.type !== 'serviceMessage') return console.log(DBGdata.type)
 	
 	saveLoginMetric(DBGdata.payload.character_id)
 	.then(dispatchNotification)
@@ -71,7 +71,7 @@ function saveLoginMetric(_Character_) {
 			.then(() => resolve(_Character_))
 			.catch(console.error)
 		})
-		.catch(console.error)
+		.catch(() => resolve(_Character_))
 	})
 }
 
@@ -87,7 +87,7 @@ function dispatchNotification (_Character_) {
 		.getAll(_Character_, {index: '_Character_'})
 		.then((characterSubscriptions) => {
 	
-			if (!characterSubscriptions.length) return
+			if (!characterSubscriptions.length) return resolve(_Character_)
 	
 			Async.eachSeries(
 		
@@ -109,7 +109,6 @@ function dispatchNotification (_Character_) {
 		
 				//for now ignore errors
 			  (err) => {
-			  	console.log('All notifications sent for:', _Character_)
 					resolve(_Character_)
 			  }
 			)

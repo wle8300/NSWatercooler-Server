@@ -1,4 +1,8 @@
+REARCHITECTURE FOR WORLD
+INVENTORY OF BATTLECASH-PURCHASE OFFFERINGS
 
+BUILDING RICH COMMUNITIES
+HIGH SIGNAL BUG REPORTS
 
 ALERTS http://ps4us.ps2.fisu.pw/alert/rss/?world=1000
 
@@ -27,6 +31,7 @@ the DBG api considers:
 - monthly fees for outfits ~35/month
 - monthly fees for characters to use scheduler and other unlocked features ~3/month
 - sell merchandise (vinyl toys, tshirts, stickers, patches, hoodies)
+- get the ear of Andy Sites and Wrel and give bug reports, feature requests
 
 # outfit benefits
 - paid-for fees to start a local Meetup®, $35 stipend/month for food & drinks
