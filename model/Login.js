@@ -13,6 +13,7 @@ var Login = T.createModel('Login', {
 
 Login.ensureIndex('_Character_')
 Login.ensureIndex('_Outfit_')
+Login.ensureIndex('_Character_Time', (doc) => [doc('_Character_'), doc('time')])
 Login.ensureIndex('_Outfit_Time', (doc) => [doc('_Outfit_'), doc('time')])
 
 module.exports = Login
