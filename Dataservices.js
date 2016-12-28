@@ -25,7 +25,7 @@ module.exports = {
 			return new Promise ((resolve, reject) => {
 				
 				Request
-				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +util.translateDBGAPIServer(server)+ ':v2/character?character_id=' +_Character_+ '&c:resolve=online_status,outfit_member_extended,faction')
+				.get('http://census.daybreakgames.com/s:' +serviceId+ '/get/' +util.translateDBGAPIServer(server)+ ':v2/character?character_id=' +_Character_+ '&c:resolve=online_status,stat,outfit_member_extended,faction,profile,stat_by_faction,stat_history,weapon_stat,weapon_stat_by_faction,')
 				.end((err, response) => {
 					
 					if (err || response.body.error) return reject('There was an error with your request')
