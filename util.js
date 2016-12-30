@@ -47,6 +47,12 @@ module.exports = {
 		
 		else return null
 	},
+	translateFromWorldUUID: function (integer) {
+		
+		if (integer === 1000) return 'genudine'
+			
+		else return null
+	},
 	translateOutfitDBGModel: function (region, OutfitDBG) {
 		return {
 			lastUpdate: new Date,

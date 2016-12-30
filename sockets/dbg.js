@@ -3,6 +3,7 @@ var Dataservices = require('../Dataservices')
 
 var CharacterSubscription = require('../model/CharacterSubscription')
 var User = require('../model/User')
+var FacilityTransfer = require('../model/FacilityTransfer')
 var Login = require('../model/Login')
 
 var Async = require('async')
@@ -29,7 +30,7 @@ client.onopen = function(e) {
 		action: 'subscribe',
 		characters: ['all'],
 		worlds: ['all'],
-		eventNames: ['PlayerLogin', 'MetagameEvent']
+		eventNames: ['PlayerLogin', 'MetagameEvent', 'FacilityControl']
 	}))
 }
  
@@ -46,9 +47,26 @@ client.onmessage = function(e) {
 		.then(dispatchNotification)
 		.then(() => {return})
 		.catch(console.error)
+		
+		return
 	}
 	
-	if (DBGdata.payload.event_name === 'MetagameEvent') {
+	if (DBGdata.payload.event_name === 'FacilityControl') {
+		
+		FacilityTransfer({
+			world: util.translateFromWorldUUID(parseInt(DBGdata.payload.world_id, 10)),
+			time: new Date(1000 * parseInt(DBGdata.payload.timestamp, 10)),
+			_Facility_: DBGdata.payload.facility_id,
+			_Outfit_: DBGdata.payload.outfit_id
+		})
+		.save()
+		.then(console.log)
+		.catch(console.error)
+		
+		return
+	}
+	
+	else {
 		console.log('ASF!', DBGdata);
 	}
 }
