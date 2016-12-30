@@ -35,11 +35,17 @@ module.exports = {
 			return callback()
 		})
 	},
-	translateDBGAPIServer: function (server) {
+	translateToPlatformString: function (server) {
 		
 		if (server === 'genudine') return 'ps2ps4us'
 		if (server === 'ceres') return 'ps2ps4eu'
 		if (server === 'pc') return 'ps2'
+	},
+	translateToWorldUUID: function (server) {
+		
+		if (server === 'genudine') return 1000
+		
+		else return null
 	},
 	translateOutfitDBGModel: function (region, OutfitDBG) {
 		return {

@@ -10,7 +10,7 @@ var W3CWebSocket = require('websocket').w3cwebsocket
 
 
 var server = ['genudine']
-var client = new W3CWebSocket('wss://push.planetside2.com/streaming?environment=' +util.translateDBGAPIServer(server[0])+ '&service-id=s:asdf')
+var client = new W3CWebSocket('wss://push.planetside2.com/streaming?environment=' +util.translateToPlatformString(server[0])+ '&service-id=s:asdf')
 // var client = new W3CWebSocket('wss://push.planetside2.com/streaming?environment=ps2ps4eu&service-id=s:asdf')
 // var client = new W3CWebSocket('wss://push.planetside2.com/streaming?environment=ps2&service-id=s:asdf')
 
@@ -29,7 +29,7 @@ client.onopen = function(e) {
 		action: 'subscribe',
 		characters: ['all'],
 		worlds: ['all'],
-		eventNames: ['PlayerLogin']
+		eventNames: ['PlayerLogin', 'MetagameEvent']
 	}))
 }
  
@@ -38,12 +38,19 @@ client.onmessage = function(e) {
 	const DBGdata = JSON.parse(e.data)
 
 	//IGNORE THESE!
-	if (DBGdata.type !== 'serviceMessage') return console.log(DBGdata.type)
+	if (DBGdata.type !== 'serviceMessage') return console.log(DBGdata)
 	
-	saveLoginMetric(DBGdata.payload.character_id)
-	.then(dispatchNotification)
-	.then(console.log)
-	.catch(console.error)
+	if (DBGdata.payload.event_name === 'PlayerLogin') {
+		
+		saveLoginMetric(DBGdata.payload.character_id)
+		.then(dispatchNotification)
+		.then(() => {return})
+		.catch(console.error)
+	}
+	
+	if (DBGdata.payload.event_name === 'MetagameEvent') {
+		console.log('ASF!', DBGdata);
+	}
 }
 
 client.onclose = function() {
