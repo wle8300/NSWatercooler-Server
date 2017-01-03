@@ -6,9 +6,6 @@ HIGH SIGNAL BUG REPORTS
 
 ALERTS http://ps4us.ps2.fisu.pw/alert/rss/?world=1000
 
-put yourself out
-sword in the fire
-
 
 # gotchas
 

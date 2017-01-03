@@ -53,6 +53,12 @@ module.exports = {
 			
 		else return null
 	},
+	translateToFisuSubdomain: function (server) {
+		
+		if (server === 'genudine') return 'ps4us'
+			
+		else return null
+	},
 	translateOutfitDBGModel: function (region, OutfitDBG) {
 		return {
 			lastUpdate: new Date,

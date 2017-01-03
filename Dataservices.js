@@ -1,9 +1,10 @@
-var util = require('./util')
-var serviceId = require('./env').dbg.serviceId
+const util = require('./util')
+const serviceId = require('./env').dbg.serviceId
 
-var genericErrorMessage = 'There was an error with your request'
+const genericErrorMessage = 'There was an error with your request'
 
-var Request = require('superagent')
+const Request = require('superagent')
+const ParseRss = require('rss-to-json')
 
 /*
 This is where 3rd party data is accessed
@@ -117,7 +118,7 @@ module.exports = {
 			return new Promise ((resolve, reject) => {
 				
 				Request
-				.get('http://ps4us.ps2.fisu.pw/api/territory/?world=' +util.translateToWorldUUID(server)+ '&continent=0')
+				.get('http://' +util.translateToFisuSubdomain(server)+ '.ps2.fisu.pw/api/territory/?world=' +util.translateToWorldUUID(server)+ '&continent=0')
 				.end((err, response) => {
 					
 					if (err) return reject(genericErrorMessage)
@@ -125,6 +126,18 @@ module.exports = {
 					return resolve(response.body.result[0])
 				})
 			})
+		},
+		getAlerts: function (server) {
+		
+			return new Promise ((resolve, reject) => {
+			
+				ParseRss.load('http://' +util.translateToFisuSubdomain(server)+ '.ps2.fisu.pw/alert/rss/?world=' +util.translateToWorldUUID(server), (err, rssItems) => {
+				
+					if (err) return reject(err)
+					
+					return resolve(rssItems)
+				})
+			})
 		}
-	}
+	},
 }
