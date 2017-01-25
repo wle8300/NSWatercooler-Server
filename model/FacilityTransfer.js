@@ -6,7 +6,7 @@ var TTypes = T.type
 
 var FacilityTransfer = T.createModel('FacilityTransfer', {
 	id: TTypes.string(),
-	world: TTypes.string(),
+	server: TTypes.string(),
 	time: TTypes.date(),
 	_Facility_: TTypes.string(),
 	_Outfit_: TTypes.string()

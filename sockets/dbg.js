@@ -54,7 +54,7 @@ client.onmessage = function(e) {
 	if (DBGdata.payload.event_name === 'FacilityControl') {
 		
 		FacilityTransfer({
-			world: util.translateFromWorldUUID(parseInt(DBGdata.payload.world_id, 10)),
+			server: util.translateFromWorldUUID(parseInt(DBGdata.payload.world_id, 10)),
 			time: new Date(1000 * parseInt(DBGdata.payload.timestamp, 10)),
 			_Facility_: DBGdata.payload.facility_id,
 			_Outfit_: DBGdata.payload.outfit_id
@@ -66,8 +66,9 @@ client.onmessage = function(e) {
 		return
 	}
 	
-	else {
-		console.log('ASF!', DBGdata);
+	if (DBGdata.payload.event_name === 'MetagameEvent') {
+		
+		return console.log(DBGdata.payload);
 	}
 }
 

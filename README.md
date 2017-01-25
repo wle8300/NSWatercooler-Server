@@ -1,3 +1,5 @@
+ALERTS websocket: https://github.com/Maelstromeous/PS2Alerts
+
 REARCHITECTURE FOR WORLD
 INVENTORY OF BATTLECASH-PURCHASE OFFFERINGS
 

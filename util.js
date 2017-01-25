@@ -7,7 +7,8 @@ const Jwt = require('jsonwebtoken')
 
 module.exports = {
 	createNewJwt: function (payload) {
-	
+		
+		//FIXME mutating!
 		delete payload.exp
 		delete payload.iat
 	
