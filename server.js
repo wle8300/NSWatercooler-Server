@@ -55,9 +55,7 @@ server.register([
   },
 ], function (err) {
 		
-	if (err) {
-		throw err
-	}
+	if (err) throw err
 	
 	server.auth.strategy('jwt', 'jwt', {
 		key: env.secret,
@@ -80,9 +78,7 @@ server.register([
 	
 //	Database.init(function (err) {
 //		
-//		if (err) {
-//			throw err
-//		}
+//		if (err) throw err
 //
 //		process.env.UV_THREADPOOL_SIZE = 64
 //		

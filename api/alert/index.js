@@ -12,16 +12,14 @@ module.exports = [
 			validate: {
 				query: {
 					server: Joi.string().required(),
-					limit: Joi.number().default(10).required()
+					limit: Joi.number().default(10)
 				}
 			}
 		},
 		handler: (request, reply) => {
 
 			/*
-				There is only
-				one alert at
-				any given time
+				There's only 1 alert any given time
 			*/
 			
 			Dataservices.dbg.getAlerts(request.query.server)

@@ -26,15 +26,11 @@ module.exports = [
 
 		  Bcrypt.genSalt(10, (err, salt) => {
 				
-				if (err) {
-					return reply(err)
-				}
+				if (err) return reply(err)
 				
 		    Bcrypt.hash(request.payload.password, salt, (err, hashedPassword) => {
     
-				  if (err) {
-	          return reply(err)
-	        }
+				  if (err) return reply(err)
 					
 					User({
 						email: request.payload.email,
