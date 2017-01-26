@@ -6,6 +6,8 @@ var Bcrypt = require('bcrypt')
 var Boom = require('boom')
 var Joi = require('joi')
 
+var passwordValidation = Joi.string().min(3).max(1000).required()
+
 
 module.exports = [
 	{
@@ -17,7 +19,7 @@ module.exports = [
 	    validate: {
 	      payload: {
 				  email: Joi.string().email().required(),
-				  password: Joi.string().required(),
+				  password: passwordValidation
 	      },
 	    },
 			pre: [{method: require('./pre/verify-unique-user')}]
@@ -110,6 +112,58 @@ module.exports = [
 			.getAll(request.params._User_, {index: '_User_'})
 			.then(reply)
 			.catch(reply)
+		}
+	},
+	{
+		method: 'PUT',
+		path: '/user/{_User_}/email',
+		config: {
+			description: 'Update your email',
+			tags: ['api'],
+			validate: {
+				payload: {
+					email: Joi.string().email().required()
+				}
+			}
+		},
+		handler: (request, reply) => {
+
+			User
+			.get(request.params._User_)
+			.update({email: request.payload.email})
+			.then(reply)
+			.catch(reply)
+		}
+	},
+	{
+		method: 'PUT',
+		path: '/user/{_User_}/password',
+		config: {
+			description: 'Update your password',
+			tags: ['api'],
+			validate: {
+				payload: {
+					password: passwordValidation
+				}
+			}
+		},
+		handler: (request, reply) => {
+
+		  Bcrypt.genSalt(10, (err, salt) => {
+				
+				if (err) return reply(err)
+				
+		    Bcrypt.hash(request.payload.password, salt, (err, hashedPassword) => {
+    
+				  if (err) return reply(err)
+					
+					User
+					.get(request.params._User_)
+					.update({password: hashedPassword})
+					.then(reply)
+					.catch(reply)
+		    })
+		  })
 		}
 	}
 ]

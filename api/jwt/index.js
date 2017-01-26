@@ -44,6 +44,7 @@ module.exports = [
 			User
 			.get(DeciferJwtPayload(request.payload.jwt).id)
 			.then((user) => reply({jwt: util.createNewJwt(user)}))
+			.catch(reply)
 		}
 	}
 ]

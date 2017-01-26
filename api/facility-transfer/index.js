@@ -27,7 +27,10 @@ module.exports = [
 			FacilityTransfer
 			.between([request.query.server, rewind], [request.query.server, new Date()], {index: 'world_time'})
 			.orderBy({index: R.desc('world_time')}) //newer=>older
-			.then(reply)
+			.then((x) => {
+				console.log(x);
+				return reply(x)
+			})
 			.catch(reply)
 		}
 	}
