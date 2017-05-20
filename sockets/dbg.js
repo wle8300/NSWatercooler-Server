@@ -52,7 +52,7 @@ client.onmessage = function(e) {
 	}
 	
 	if (DBGdata.payload.event_name === 'FacilityControl') {
-		
+		console.log(1, 'asdf', DBGdata.payload);
 		FacilityTransfer({
 			server: util.translateFromWorldUUID(parseInt(DBGdata.payload.world_id, 10)),
 			time: new Date(1000 * parseInt(DBGdata.payload.timestamp, 10)),

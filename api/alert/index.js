@@ -27,5 +27,4 @@ module.exports = [
 			.catch((err) => reply(Boom.badRequest(err)))
 		}
 	}
-	
 ]

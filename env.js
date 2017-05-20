@@ -1,6 +1,3 @@
-var port = process.env.SERVER_PORT || '3001'
-
-
 module.exports = {
 	secret: 'imemba',
 	supportEmail: {
@@ -15,8 +12,8 @@ module.exports = {
 	},
 	server: {
 		protocol: process.env.SERVER_PROTOCOL || 'http',
-		host: process.env.SERVER_HOST || 'localhost',
-		port: port
+		host: process.env.SERVER_HOST || '192.168.0.6',
+		port: process.env.SERVER_PORT || '3001'
 	},
 	dbg: {
 		serviceId: 'asdf'
