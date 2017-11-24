@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon server.js",
-    "prod": "NODE_ENV=production RETHINKDB_HOST=localhost RETHINKDB_PORT=28015 RETHINKDB_DB=pub_center SERVER_PROTOCOL=http SERVER_HOST=10.128.40.215 SERVER_PORT=3001 pm2 start server.js -f --node-args='--max-old-space-size=1024'"
+    "prod": "NODE_ENV=production RETHINKDB_HOST=localhost RETHINKDB_PORT=28015 RETHINKDB_DB=NSWatercooler SERVER_PROTOCOL=http SERVER_HOST=10.128.40.215 SERVER_PORT=3001 pm2 start server.js -f --node-args='--max-old-space-size=1024'"
   },
   "author": "William Le <williamle8300@gmail.com>",
   "license": "ISC",
