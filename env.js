@@ -8,7 +8,7 @@ module.exports = {
 		host: process.env.RETHINKDB_HOST || 'localhost',
 		port: process.env.RETHINKDB_PORT || 28015,
     authKey: '',
-		db: process.env.RETHINKDB_DB || 'memberberries_backend',
+		db: process.env.RETHINKDB_DB || 'NSWatercooler',
 	},
 	server: {
 		protocol: process.env.SERVER_PROTOCOL || 'http',

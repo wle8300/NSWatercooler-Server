@@ -1,10 +1,13 @@
+# To Deploy
+- npm run prod
+- cd sockets; node dbg.js;
+
+# Notes
+
 ALERTS websocket: https://github.com/Maelstromeous/PS2Alerts
 
 REARCHITECTURE FOR WORLD
 INVENTORY OF BATTLECASH-PURCHASE OFFFERINGS
-
-BUILDING RICH COMMUNITIES
-HIGH SIGNAL BUG REPORTS
 
 ALERTS http://ps4us.ps2.fisu.pw/alert/rss/?world=1000
 
@@ -22,7 +25,7 @@ the DBG api considers:
 - gain tangible/intangible goods
 
 ## tangible goods
-- tangible goods individual/group, e.g., cold hard cash, swag (clothing, stickers, patches), 
+- tangible goods individual/group, e.g., cold hard cash, swag (clothing, stickers, patches),
 - individual intangible value, e.g., preferred loadouts, best class performance, statistics, booty passed down from outfit leader, tactile/response time improvement, decision making
 - group intangible value, e.g., street credz to flaunt
 
