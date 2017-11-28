@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon server.js",
-    "deploy": "git pull; npm install; forever stop NSWatercooler-Server; NODE_ENV=production RETHINKDB_HOST=localhost RETHINKDB_PORT=28015 RETHINKDB_DB=NSWatercooler SERVER_PROTOCOL=https SERVER_HOST=10.128.40.215 SERVER_PORT=3003 forever --uid NSWatercooler-Server start server.js --node-args='--max-old-space-size=1024'"
+    "deploy": "git pull; npm install; pm2 stop 'NSWatercooler-Client'; NODE_ENV=production RETHINKDB_HOST=localhost RETHINKDB_PORT=28015 RETHINKDB_DB=NSWatercooler SERVER_PROTOCOL=https SERVER_HOST=10.132.27.73 SERVER_PORT=3000 pm2 start server.js --name='NSWatercooler-Client' --node-args='--max-old-space-size=1024'"
   },
   "author": "William Le <williamle8300@gmail.com>",
   "license": "ISC",

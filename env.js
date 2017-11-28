@@ -13,7 +13,7 @@ module.exports = {
 	server: {
 		protocol: process.env.SERVER_PROTOCOL || 'http',
 		host: process.env.SERVER_HOST || 'localhost',
-		port: process.env.SERVER_PORT || '3003'
+		port: process.env.SERVER_PORT || '3000'
 	},
 	dbg: {
 		serviceId: 'asdf'
