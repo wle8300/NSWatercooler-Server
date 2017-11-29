@@ -27,13 +27,13 @@ module.exports = [
 		handler: (request, reply) => {
 
 		  Bcrypt.genSalt(10, (err, salt) => {
-				
+
 				if (err) return reply(err)
-				
+
 		    Bcrypt.hash(request.payload.password, salt, (err, hashedPassword) => {
-    
+
 				  if (err) return reply(err)
-					
+
 					User({
 						email: request.payload.email,
 						password: hashedPassword
@@ -82,9 +82,9 @@ module.exports = [
 	    }
 		},
 		handler: function (request, reply) {
-			
+
 			if (request.params._User_ !== request.auth.credentials.id) return reply(Boom.unauthorized())
-			
+
 			CharacterSubscription
 			.getAll(request.params._User_, {index: '_User_'})
 			.then(reply)
@@ -105,13 +105,16 @@ module.exports = [
 	    }
 		},
 		handler: function (request, reply) {
-			
+
 			if (request.params._User_ !== request.auth.credentials.id) return reply(Boom.unauthorized())
-			
-			OutfitBookmark
-			.getAll(request.params._User_, {index: '_User_'})
-			.then(reply)
-			.catch(reply)
+
+			setTimeout(() => {
+
+				OutfitBookmark
+				.getAll(request.params._User_, {index: '_User_'})
+				.then(reply)
+				.catch(reply)
+			}, 1000);
 		}
 	},
 	{
@@ -150,13 +153,13 @@ module.exports = [
 		handler: (request, reply) => {
 
 		  Bcrypt.genSalt(10, (err, salt) => {
-				
+
 				if (err) return reply(err)
-				
+
 		    Bcrypt.hash(request.payload.password, salt, (err, hashedPassword) => {
-    
+
 				  if (err) return reply(err)
-					
+
 					User
 					.get(request.params._User_)
 					.update({password: hashedPassword})
