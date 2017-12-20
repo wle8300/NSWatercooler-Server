@@ -1,8 +1,16 @@
+
+
+# server access
+ssh wle@104.236.248.99
+
 # To Deploy
 - npm run prod
 - cd sockets; node dbg.js;
 
 # Notes
+
+Rethinkdb keeps crashing
+$ sudo /etc/init.d/rethinkdb restart
 
 ALERTS websocket: https://github.com/Maelstromeous/PS2Alerts
 

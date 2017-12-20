@@ -108,13 +108,10 @@ module.exports = [
 
 			if (request.params._User_ !== request.auth.credentials.id) return reply(Boom.unauthorized())
 
-			setTimeout(() => {
-
-				OutfitBookmark
-				.getAll(request.params._User_, {index: '_User_'})
-				.then(reply)
-				.catch(reply)
-			}, 1000);
+			OutfitBookmark
+			.getAll(request.params._User_, {index: '_User_'})
+			.then(reply)
+			.catch(reply)
 		}
 	},
 	{
